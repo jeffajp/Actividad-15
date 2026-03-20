@@ -38,16 +38,24 @@ do
             break;
         case 2:
             Console.WriteLine("ingrese el codigo del producto a modificar: ");
-            int nuevo = int.Parse(Console.ReadLine());
+            int codigo = int.Parse(Console.ReadLine());
+            Console.WriteLine("ingrese el nuevo producto: ");
+
             if (productos.ContainsKey(nuevo))
             {
                 Console.WriteLine("codigo encontrado: ");
-                productos.Remove(nuevo);
+                productos[codigo] = nuevoproducto;
             }
            
             break;
         case 3:
             Console.WriteLine("ingrese el codigo del producto que desea eliminar: ");
+            int codigo = int.Parse(Console.ReadLine());
+            if(productos.ContainsKey(codigo))
+            {
+
+            }
+
             break;
         case 4:
             Console.WriteLine("ingrese el codigo del producto que desea buscar: ");
