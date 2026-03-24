@@ -26,12 +26,12 @@ do
             for(int i=0; i<n; i++)
             {
                 Console.WriteLine("ingrese el codigo del producto: ");
-                int codigo = int.Parse(Console.ReadLine());
+                int cod = int.Parse(Console.ReadLine());
                 Producto p = new Producto();
                 Console.WriteLine("ingrese el nombre del producto: "); p.Nombre = Console.ReadLine();
                 Console.WriteLine("ingrese el precio del producto: "); p.Precio = double.Parse(Console.ReadLine());
                 Console.WriteLine("ingrese la cantidad fisica: "); p.CantidadExistente = int.Parse(Console.ReadLine());
-                productos[codigo] = p;
+                productos[cod] = p;
 
             }
  
@@ -39,22 +39,13 @@ do
         case 2:
             Console.WriteLine("ingrese el codigo del producto a modificar: ");
             int codigo = int.Parse(Console.ReadLine());
-            Console.WriteLine("ingrese el nuevo producto: ");
-
-            if (productos.ContainsKey(nuevo))
-            {
-                Console.WriteLine("codigo encontrado: ");
-                productos[codigo] = nuevoproducto;
-            }
-           
+            Console.WriteLine("nuevo nombre es: ");
+            string nombre= Console.ReadLine();
+            productos[codigo] = nombre;
             break;
         case 3:
             Console.WriteLine("ingrese el codigo del producto que desea eliminar: ");
-            int codigo = int.Parse(Console.ReadLine());
-            if(productos.ContainsKey(codigo))
-            {
-
-            }
+            int codi = int.Parse(Console.ReadLine());
 
             break;
         case 4:
@@ -62,7 +53,14 @@ do
             break;
         case 5:
             Console.WriteLine("los productos registrados son: ");
-            break;
+			Console.WriteLine("\n--- LISTADO GENERAL ---");
+			foreach (KeyValuePair<int, Producto> item in productos)
+			{
+				Console.Write($"Carnet: {item.Key} | ");
+				item.Value.MostrarDatos();
+			}
+
+			break;
         case 6:
             Console.WriteLine("registrar venta: ");
             break;
