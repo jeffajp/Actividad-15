@@ -39,24 +39,32 @@ do
         case 2:
             Console.WriteLine("ingrese el codigo del producto a modificar: ");
             int codigo = int.Parse(Console.ReadLine());
-            Console.WriteLine("nuevo nombre es: ");
-            string nombre= Console.ReadLine();
-            productos[codigo] = nombre;
+            if(productos.ContainsKey(codigo))
+            {
+                Console.WriteLine("ingrese el nuevo nombre: ");
+                productos[codigo].Nombre = Console.ReadLine();
+            }
             break;
         case 3:
             Console.WriteLine("ingrese el codigo del producto que desea eliminar: ");
             int codi = int.Parse(Console.ReadLine());
+            if(productos.Remove(codi))
+            {
+                Console.WriteLine("producto eliminado: ");
+            }
 
             break;
         case 4:
             Console.WriteLine("ingrese el codigo del producto que desea buscar: ");
+            int buscar= int.Parse(Console.ReadLine());
+            if(productos.ContainsKey(buscar))
+                productos[buscar].MostrarDatos();
             break;
         case 5:
             Console.WriteLine("los productos registrados son: ");
-			Console.WriteLine("\n--- LISTADO GENERAL ---");
-			foreach (KeyValuePair<int, Producto> item in productos)
+			foreach (var item in productos)
 			{
-				Console.Write($"Carnet: {item.Key} | ");
+				Console.Write($"codigo: {item.Key} | ");
 				item.Value.MostrarDatos();
 			}
 
